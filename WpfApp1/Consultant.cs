@@ -21,7 +21,14 @@ namespace WpfApp1
         }
         public virtual string GetPassport(int ClientID)
         {
-            return "*********************";
+            if (DataBase[ClientID].Passport != "")
+            {
+                return "*********************";
+            }
+            else
+            {
+                return "";
+            }
         }
         public string GetTelephone(int ClientID)
         {
@@ -37,7 +44,7 @@ namespace WpfApp1
             return false;
         }
 
-        public virtual bool SetPassport(int ClientID, uint new_passport)
+        public virtual bool SetPassport(int ClientID, string new_passport)
         {
             return false;
         }

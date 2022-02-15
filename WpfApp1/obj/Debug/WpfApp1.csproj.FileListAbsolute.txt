@@ -13,7 +13,6 @@ C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.Generate
 C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
 C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
-C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\WpfApp1.exe.config
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\WpfApp1.exe
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\WpfApp1.pdb
@@ -35,3 +34,10 @@ C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\MaterialDesignColors.pdb
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignColors.dll
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache

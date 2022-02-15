@@ -20,7 +20,7 @@
         <StackPanel Margin="0,0,0,0" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch">
             <ComboBox x:Name="ClientList" BorderBrush="Black" Width="253"
                       SelectionChanged="ComboBox_SelectionChanged"
-                      Text="Шагурин Говноед Поганович">
+                      Text="">
             </ComboBox>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0"
                         HorizontalAlignment="Center">
@@ -31,13 +31,13 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center">
                 <TextBox x:Name="Telephone" BorderBrush="Black" Background="White"
-                     Width="253" IsEnabled="True" Margin="0,0,0,0" Text="+79991234567"/>
+                     Width="253" IsEnabled="True" Margin="0,0,0,0" Text=""/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center">
                 <TextBox x:Name="Passport" BorderBrush="Black" Background="White"
                      Width="253"
                      IsEnabled="{Binding IsChecked, ElementName=manager}"
-                     Margin="0,0,0,0" Text="1234 567891"/>
+                     Margin="0,0,0,0" Text=""/>
             </StackPanel>
             <TextBlock x:Name="RecordInfo" Background="White"
                         Width="253" Margin="0,10,0,0" IsEnabled="False" Height="75">

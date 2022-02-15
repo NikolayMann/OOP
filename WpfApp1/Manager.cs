@@ -8,7 +8,7 @@ namespace WpfApp1
 {
     public class Manager:Consultant
     {
-        public override bool SetPassport(int ClientID, uint new_passport)
+        public override bool SetPassport(int ClientID, string new_passport)
         {
             bool result = false;
             if (ClientID < DataBase.Count)

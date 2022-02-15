@@ -26,7 +26,7 @@ namespace WpfApp1
                 LastwritedTime = DateTime.Now;
             }
         }
-        public void PassportSet(BankWorker worker, uint new_num)
+        public void PassportSet(BankWorker worker, string new_num)
         {
             _passport = new_num;
             if (worker is Manager)
@@ -58,7 +58,7 @@ namespace WpfApp1
         private string _lastname;
         public string lastchanger { get; set; }
         public DateTime LastwritedTime;
-        private uint _passport {get; set;}
+        private string _passport {get; set;}
         private string _telephone;
         public Client(string name, string sec_name, string last_name, string telephone)
         {
@@ -76,7 +76,7 @@ namespace WpfApp1
             set { }
         }
 
-        public string Passport { get { return _passport.ToString(); } }
+        public string Passport { get { return _passport; } }
 
         public string Telephone { get { return _telephone; } }
         private Client() { }

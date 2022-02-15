@@ -13,6 +13,6 @@ namespace WpfApp1
         string GetTelephone(int ClientID);
         bool SetTelephone(int ClientID, string new_telephone);
         bool SetName(int ClientID, string new_name);
-        bool SetPassport(int ClientID, uint new_passport);
+        bool SetPassport(int ClientID, string new_passport);
     }
 }
