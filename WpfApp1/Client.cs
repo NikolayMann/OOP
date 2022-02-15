@@ -15,27 +15,48 @@ namespace WpfApp1
                 _name = name_info[0];
                 _secondname = name_info[1];
                 _lastname = name_info[2];
-                lastchanger = worker;
+                if (worker is Manager)
+                {
+                    lastchanger = "Manager";
+                }
+                else
+                {
+                    lastchanger = "Consultant";
+                }
                 LastwritedTime = DateTime.Now;
             }
         }
         public void PassportSet(BankWorker worker, uint new_num)
         {
             _passport = new_num;
-            lastchanger = worker;
+            if (worker is Manager)
+            {
+                lastchanger = "Manager";
+            }
+            else
+            {
+                lastchanger = "Consultant";
+            }
             LastwritedTime = DateTime.Now;
         }
         public void TelephoneSet(BankWorker worker, string new_num)
         {
             _telephone = new_num;
-            lastchanger = worker;
+            if (worker is Manager)
+            {
+                lastchanger = "Manager";
+            }
+            else
+            {
+                lastchanger = "Consultant";
+            }
             LastwritedTime = DateTime.Now;
         }
 
         private string _name;
         private string _secondname;
         private string _lastname;
-        public BankWorker lastchanger;
+        public string lastchanger;
         public DateTime LastwritedTime;
         private uint _passport {get; set;}
         private string _telephone;
@@ -45,7 +66,7 @@ namespace WpfApp1
             _secondname = sec_name;
             _lastname = last_name;
             _telephone = telephone;
-            lastchanger = new Manager();
+            lastchanger = "Manager";
             LastwritedTime = DateTime.Now;
         }
 
