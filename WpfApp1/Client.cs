@@ -56,7 +56,7 @@ namespace WpfApp1
         private string _name;
         private string _secondname;
         private string _lastname;
-        public string lastchanger;
+        public string lastchanger { get; set; }
         public DateTime LastwritedTime;
         private uint _passport {get; set;}
         private string _telephone;
@@ -73,6 +73,7 @@ namespace WpfApp1
         public string Name
         {
             get { return $"{_name} {_secondname} {_lastname}"; }
+            set { }
         }
 
         public string Passport { get { return _passport.ToString(); } }

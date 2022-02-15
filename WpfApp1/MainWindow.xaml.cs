@@ -18,11 +18,11 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            ClientList.ItemsSource = Consultant.DataBase;            
         }
 
         void InitClientInfo()
-        { 
+        {
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -33,7 +33,7 @@ namespace WpfApp1
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string[] name_info = ClientList.Text.Split(' ');
-            if (name_info.Length != 3)
+            if (name_info.Length < 3)
             {
                 MessageBox.Show("Имя введено неправильно! Введите ФИО полностью через пробел!");
             }
@@ -69,6 +69,7 @@ namespace WpfApp1
                             writer.WriteLine(str);
                         }                       
                     }
+                    ClientList.Items.Add(Worker.GetName(ID));
                     Save.IsEnabled = false;
                     Add.IsEnabled = true;
                 }
@@ -93,6 +94,8 @@ namespace WpfApp1
         private void consultant_Checked(object sender, RoutedEventArgs e)
         {
             Worker = new Consultant();
+            Add.IsEnabled = false;
+            Save.IsEnabled = true;
         }
     }
 }

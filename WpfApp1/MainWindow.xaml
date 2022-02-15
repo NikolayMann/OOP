@@ -20,7 +20,7 @@
         <StackPanel Margin="0,0,0,0" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch">
             <ComboBox x:Name="ClientList" BorderBrush="Black" Width="253"
                       SelectionChanged="ComboBox_SelectionChanged"
-                      Text="Иванов Иван Иванович">
+                      Text="Шагурин Говноед Поганович">
             </ComboBox>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0"
                         HorizontalAlignment="Center">
