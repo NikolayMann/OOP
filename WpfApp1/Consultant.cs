@@ -49,12 +49,14 @@ namespace WpfApp1
             return false;
         }
 
-        public bool SetTelephone(int ClientID, string new_telephone)
+        public virtual bool SetTelephone(int ClientID, string new_telephone)
         {
             bool result = false;
             if (ClientID < DataBase.Count)
             {
-                DataBase[ClientID].TelephoneSet(this,new_telephone);
+                DataBase[ClientID].Telephone = new_telephone;
+                DataBase[ClientID].lastchanger = "Consultant";
+                DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
             }
             return result;

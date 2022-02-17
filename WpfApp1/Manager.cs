@@ -14,7 +14,9 @@ namespace WpfApp1
             if (ClientID < DataBase.Count)
             {
                 result = true;
-                DataBase[ClientID].PassportSet(this, new_passport);
+                DataBase[ClientID].Passport = new_passport;
+                DataBase[ClientID].lastchanger = "Manager";
+                DataBase[ClientID].LastwritedTime = DateTime.Now;
             }
             return result;
         }
@@ -24,7 +26,11 @@ namespace WpfApp1
             bool result = false;
             if (name_info.Length == 3)
             {
-                DataBase[ClientID].NameSet(this, name_info);
+                DataBase[ClientID].Name = name_info[0];
+                DataBase[ClientID].Secondname = name_info[1];
+                DataBase[ClientID].Lastname = name_info[2];
+                DataBase[ClientID].lastchanger = "Manager";
+                DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
             }            
             return result;
@@ -44,6 +50,19 @@ namespace WpfApp1
         public override string GetPassport(int ClientID)
         {
             return DataBase[ClientID].Passport;
+        }
+
+        public override bool SetTelephone(int ClientID, string new_telephone)
+        {
+            bool result = false;
+            if (ClientID < DataBase.Count)
+            {
+                DataBase[ClientID].Telephone = new_telephone;
+                DataBase[ClientID].lastchanger = "Manager";
+                DataBase[ClientID].LastwritedTime = DateTime.Now;
+                result = true;
+            }
+            return result;
         }
     }
 }

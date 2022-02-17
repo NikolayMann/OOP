@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="BankWorker.cs" />
+    <Compile Include="ClientDatabase.cs" />
     <Compile Include="Consultant.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

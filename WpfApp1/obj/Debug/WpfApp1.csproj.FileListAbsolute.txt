@@ -16,7 +16,6 @@ C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\WpfApp1.exe.config
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\WpfApp1.exe
 C:\Projects\Hausaufgabe\OOP\WpfApp1\bin\Debug\WpfApp1.pdb
-C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\WpfApp1.csprojAssemblyReference.cache
 C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\MainWindow.g.cs
 C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\App.g.cs
 C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache

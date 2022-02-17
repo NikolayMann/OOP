@@ -15,43 +15,12 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         BankWorker Worker = new Manager();
+        ClientDatabase database = new ClientDatabase();
         public MainWindow()
         {
-            InitializeComponent();
-            InitClientInfo();
+            InitializeComponent();         
+            database.InitClientInfo(ref ClientList);
             RefreshFormData();
-        }
-
-        void InitClientInfo()
-        {
-            if (File.Exists("base.txt"))
-            {
-                using (Stream file = new FileStream("base.txt", FileMode.Open))
-                {
-                    using(StreamReader reader = new StreamReader(file))
-                    {
-                        int counter = 0;
-                        while (!reader.EndOfStream)
-                        {
-                            string line = reader.ReadLine();
-                            string[] customer = line.Split('|');
-                            string[] FullName = customer[0].Split(' ');
-                            if (FullName.Length == 3)
-                            {
-                                Client client = new Client(FullName[0], FullName[1], FullName[2], customer[1]);
-                                Manager.DataBase.Add(client);
-                                Manager temp = new Manager();
-                                temp.SetPassport(counter, customer[2]);
-                                client.lastchanger = customer[3];
-                                client.LastwritedTime = Convert.ToDateTime(customer[4]);
-                                ClientList.Items.Add(Worker.GetName(counter));
-                                counter++;
-                            }
-                        }
-                    }
-                }
-                ClientList.SelectedIndex = 0;
-            }
         }
 
         void RefreshFormData()
@@ -71,38 +40,12 @@ namespace WpfApp1
 
         private void AddNewCustomer()
         {
-            string[] name_info = ClientList.Text.Split(' ');
-            if (name_info.Length < 3)
+            if (database.SaveNewClient(ClientList.Text, Telephone.Text, Passport.Text))
             {
-                MessageBox.Show("Имя введено неправильно! Введите ФИО полностью через пробел!");
-            }
-            else
-            {
-                if (Telephone.Text != "")
-                {
-                    Client client = new Client(name_info[0], name_info[1], name_info[2], Telephone.Text);
-                    Manager.DataBase.Add(client);
-                    string pas_num = $" {Passport.Text} ";
-                    string[] ser_num = pas_num.Split(' ');
-                    pas_num = "";
-                    foreach (string s in ser_num)
-                    {
-                        pas_num += s;
-                    }
-                    Worker.SetPassport(Manager.DataBase.Count - 1, pas_num);
-                    int ID = Manager.DataBase.Count - 1;
-                    using (Stream file = new FileStream("base.txt", FileMode.Append))
-                    {
-                        using (StreamWriter writer = new StreamWriter(file))
-                        {
-                            string str = $"{Worker.GetName(ID)}|{Worker.GetTelephone(ID)}|{Worker.GetPassport(ID)}|{client.lastchanger}|{client.LastwritedTime}";
-                            writer.WriteLine(str);
-                        }
-                    }
-                    ClientList.Items.Add(Worker.GetName(ID));
-                    Save.IsEnabled = false;
-                    Add.IsEnabled = true;
-                }
+                int ID = Manager.DataBase.Count - 1;
+                ClientList.Items.Add(Worker.GetName(ID));
+                Save.IsEnabled = false;
+                Add.IsEnabled = true;
             }
         }
 
@@ -111,17 +54,7 @@ namespace WpfApp1
             if (Telephone.Text != "")
             {
                 Worker.SetTelephone(ClientList.SelectedIndex, Telephone.Text);
-                using (Stream file = new FileStream("base.txt", FileMode.Append))
-                {
-                    using (StreamWriter writer = new StreamWriter(file))
-                    {
-                        for (int i = 0; i < Manager.DataBase.Count; i++)
-                        {
-                            string str = $"{Worker.GetName(i)}|{Worker.GetTelephone(i)}|{Manager.DataBase[i].Passport}|{Manager.DataBase[i].lastchanger}|{Manager.DataBase[i].LastwritedTime}";
-                            writer.WriteLine(str);
-                        }
-                    }
-                }
+                database.UpdateDatabase();
             }
         }
         private void Save_Click(object sender, RoutedEventArgs e)
