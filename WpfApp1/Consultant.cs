@@ -9,19 +9,18 @@ namespace WpfApp1
 {
     public class Consultant : BankWorker
     {
-        public static ObservableCollection<Client> DataBase = new ObservableCollection<Client>();
-        public string GetName(int ClientID)
+        public string GetName(Client client)
         {
-            string result = "Item not exist";
-            if (ClientID < DataBase.Count)
+            string result = "";
+            if (client != null)
             {
-                result = $"{DataBase[ClientID].Name}";
+                result = $"{client.Name}";
             }
             return result;
         }
         public virtual string GetPassport(int ClientID)
         {
-            if (DataBase[ClientID].Passport != "")
+            if (ClientDatabase.DataBase[ClientID].Passport != "")
             {
                 return "*********************";
             }
@@ -33,9 +32,9 @@ namespace WpfApp1
         public string GetTelephone(int ClientID)
         {
             string result = "Item not exist";
-            if (ClientID < DataBase.Count)
+            if (ClientID < ClientDatabase.DataBase.Count)
             {
-                result = $"{DataBase[ClientID].Telephone}";
+                result = $"{ClientDatabase.DataBase[ClientID].Telephone}";
             }
             return result;
         }
@@ -52,11 +51,11 @@ namespace WpfApp1
         public virtual bool SetTelephone(int ClientID, string new_telephone)
         {
             bool result = false;
-            if (ClientID < DataBase.Count)
+            if (ClientID < ClientDatabase.DataBase.Count)
             {
-                DataBase[ClientID].Telephone = new_telephone;
-                DataBase[ClientID].lastchanger = "Consultant";
-                DataBase[ClientID].LastwritedTime = DateTime.Now;
+                ClientDatabase.DataBase[ClientID].Telephone = new_telephone;
+                ClientDatabase.DataBase[ClientID].lastchanger = "Consultant";
+                ClientDatabase.DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
             }
             return result;

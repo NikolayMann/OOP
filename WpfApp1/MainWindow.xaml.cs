@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.IO;
 using System.Xml.Serialization;
+using System.Windows.Data;
 namespace WpfApp1
 {
     /// <summary>
@@ -18,19 +19,22 @@ namespace WpfApp1
         ClientDatabase database = new ClientDatabase();
         public MainWindow()
         {
-            InitializeComponent();         
-            database.InitClientInfo(ref ClientList);
+            InitializeComponent();
             RefreshFormData();
+            Binding binding = new Binding();
+          
         }
 
         void RefreshFormData()
         {
             if (ClientList.SelectedIndex >= 0)
             {
-                ClientFullName.Text = Worker.GetName(ClientList.SelectedIndex);
-                Telephone.Text = Worker.GetTelephone(ClientList.SelectedIndex);
-                Passport.Text = Worker.GetPassport(ClientList.SelectedIndex);
-                RecordInfo.Text = $"Changed {Manager.DataBase[ClientList.SelectedIndex].lastchanger}\r\n At {Manager.DataBase[ClientList.SelectedIndex].LastwritedTime}";
+                int ID = ClientList.SelectedIndex;
+                Client client = database.GetDatabaseClient(ID);                
+                ClientFullName.Text = Worker.GetName(client);
+                Telephone.Text = Worker.GetTelephone(ID);
+                Passport.Text = Worker.GetPassport(ID);
+                RecordInfo.Text = $"Changed {client.lastchanger}\r\n At {client.LastwritedTime}";
             }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,8 +46,9 @@ namespace WpfApp1
         {
             if (database.SaveNewClient(ClientList.Text, Telephone.Text, Passport.Text))
             {
-                int ID = Manager.DataBase.Count - 1;
-                ClientList.Items.Add(Worker.GetName(ID));
+                int ID = ClientDatabase.DataBase.Count - 1;
+                Client client = database.GetDatabaseClient(ID);
+                ClientList.Items.Add(Worker.GetName(client));
                 Save.IsEnabled = false;
                 Add.IsEnabled = true;
             }

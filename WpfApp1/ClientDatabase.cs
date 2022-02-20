@@ -1,16 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Collections.Generic;
+using System.Collections;
+
 namespace WpfApp1
 {
     class ClientDatabase
     {
-        public void InitClientInfo(ref ComboBox ClientList)
+        public static ObservableCollection<Client> DataBase = new ObservableCollection<Client>();
+        public ClientDatabase()
+        {
+            InitClientInfo();
+        }
+        private void InitClientInfo()
         {
             if (File.Exists("base.txt"))
             {
@@ -26,16 +34,15 @@ namespace WpfApp1
                             string[] fio = info[0].Split(' ');
                             Client client = new Client(fio[0], fio[1], fio[2], info[1]);
                             Manager ger = new Manager();
-                            Manager.DataBase.Add(client);
+                            DataBase.Add(client);
                             ger.SetPassport(counter, info[2]);
-                            ClientList.Items.Add(client.Name);
+                            
                             counter++;
                         }
                     }
                 }
             }
         }
-
         public bool SaveNewClient(string full_name, string telephone, string passport)
         {
             bool result = false;
@@ -49,7 +56,7 @@ namespace WpfApp1
                 if (telephone != "")
                 {
                     Client client = new Client(name_info[2], name_info[1], name_info[0], telephone);
-                    Manager.DataBase.Add(client);
+                    DataBase.Add(client);
                     string pas_num = passport;
                     string[] ser_num = passport.Split(' ');
                     pas_num = "";
@@ -57,13 +64,13 @@ namespace WpfApp1
                     {
                         pas_num += s;
                     }
-                    int ID = Manager.DataBase.Count - 1;
-                    Manager.DataBase[ID].Passport = pas_num;                    
+                    int ID = ClientDatabase.DataBase.Count - 1;
+                    ClientDatabase.DataBase[ID].Passport = pas_num;                    
                     using (Stream file = new FileStream("base.txt", FileMode.OpenOrCreate))
                     {
                         using (StreamWriter writer = new StreamWriter(file))
                         {
-                            string str = $"{Manager.DataBase[ID].Name}|{Manager.DataBase[ID].Telephone}|{Manager.DataBase[ID].Passport}|{client.lastchanger}|{client.LastwritedTime}";
+                            string str = $"{ClientDatabase.DataBase[ID].Name}|{ClientDatabase.DataBase[ID].Telephone}|{ClientDatabase.DataBase[ID].Passport}|{client.lastchanger}|{client.LastwritedTime}";
                             writer.WriteLine(str);
                         }
                     }
@@ -73,19 +80,34 @@ namespace WpfApp1
             return result;
         }
 
+        /// <summary>
+        /// Возвращает выбранный экземпляр класса Client из базы данных.
+        /// </summary>
+        /// <param name="ClientID">Идентификатор клие</param>
+        /// <returns> null если элемент отсутствет в базе</returns>
+        public Client GetDatabaseClient(int ClientID)
+        {
+            Client result = null;
+            if (ClientID < DataBase.Count)
+            {
+                result = DataBase[ClientID];
+            }
+            return result;
+        }
         public void UpdateDatabase()
         {
             using (Stream file = new FileStream("base.txt", FileMode.Create))
             {
                 using (StreamWriter writer = new StreamWriter(file))
                 {
-                    for (int i = 0; i < Manager.DataBase.Count; i++)
+                    for (int i = 0; i < DataBase.Count; i++)
                     {
-                        string str = $"{Manager.DataBase[i].Name}|{Manager.DataBase[i].Telephone}|{Manager.DataBase[i].Passport}|{Manager.DataBase[i].lastchanger}|{Manager.DataBase[i].LastwritedTime}";
+                        string str = $"{DataBase[i].Name}|{DataBase[i].Telephone}|{DataBase[i].Passport}|{DataBase[i].lastchanger}|{DataBase[i].LastwritedTime}";
                         writer.WriteLine(str);
                     }
                 }
             }
         }
+
     }
 }

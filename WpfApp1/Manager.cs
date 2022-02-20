@@ -11,12 +11,12 @@ namespace WpfApp1
         public override bool SetPassport(int ClientID, string new_passport)
         {
             bool result = false;
-            if (ClientID < DataBase.Count)
+            if (ClientID < ClientDatabase.DataBase.Count)
             {
                 result = true;
-                DataBase[ClientID].Passport = new_passport;
-                DataBase[ClientID].lastchanger = "Manager";
-                DataBase[ClientID].LastwritedTime = DateTime.Now;
+                ClientDatabase.DataBase[ClientID].Passport = new_passport;
+                ClientDatabase.DataBase[ClientID].lastchanger = "Manager";
+                ClientDatabase.DataBase[ClientID].LastwritedTime = DateTime.Now;
             }
             return result;
         }
@@ -26,11 +26,11 @@ namespace WpfApp1
             bool result = false;
             if (name_info.Length == 3)
             {
-                DataBase[ClientID].Name = name_info[0];
-                DataBase[ClientID].Secondname = name_info[1];
-                DataBase[ClientID].Lastname = name_info[2];
-                DataBase[ClientID].lastchanger = "Manager";
-                DataBase[ClientID].LastwritedTime = DateTime.Now;
+                ClientDatabase.DataBase[ClientID].Name = name_info[0];
+                ClientDatabase.DataBase[ClientID].Secondname = name_info[1];
+                ClientDatabase.DataBase[ClientID].Lastname = name_info[2];
+                ClientDatabase.DataBase[ClientID].lastchanger = "Manager";
+                ClientDatabase.DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
             }            
             return result;
@@ -39,7 +39,7 @@ namespace WpfApp1
         public override bool SetName(int ClientID, string new_name)
         {
             bool result = false;
-            if (ClientID < DataBase.Count)
+            if (ClientID < ClientDatabase.DataBase.Count)
             {
                 string[] fio = new_name.Split(' ');
                 result = SetClientName(ClientID, fio);
@@ -49,17 +49,17 @@ namespace WpfApp1
 
         public override string GetPassport(int ClientID)
         {
-            return DataBase[ClientID].Passport;
+            return ClientDatabase.DataBase[ClientID].Passport;
         }
 
         public override bool SetTelephone(int ClientID, string new_telephone)
         {
             bool result = false;
-            if (ClientID < DataBase.Count)
+            if (ClientID < ClientDatabase.DataBase.Count)
             {
-                DataBase[ClientID].Telephone = new_telephone;
-                DataBase[ClientID].lastchanger = "Manager";
-                DataBase[ClientID].LastwritedTime = DateTime.Now;
+                ClientDatabase.DataBase[ClientID].Telephone = new_telephone;
+                ClientDatabase.DataBase[ClientID].lastchanger = "Manager";
+                ClientDatabase.DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
             }
             return result;

@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
+    public struct ClientCard
+    {
+        public string FirstName { get; set; }
+        public string Secondname { get; set; }
+        public string Lastname { get; set; }
+        public string Telephone { get; set; }
+        public string Passport { get; set; }
+    }
     public class Client
     {
         public string FirstName;

@@ -5,6 +5,11 @@
       "ProjectGuid": "99464ba6-b4c8-4811-bfc7-ce33b2719eb5",
       "DisplayName": "WpfApp1",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1

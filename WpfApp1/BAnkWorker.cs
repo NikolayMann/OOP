@@ -9,7 +9,7 @@ namespace WpfApp1
     public interface BankWorker
     {        
         string GetPassport(int ClientID);
-        string GetName(int ClientID);
+        string GetName(Client client);
         string GetTelephone(int ClientID);
         bool SetTelephone(int ClientID, string new_telephone);
         bool SetName(int ClientID, string new_name);
