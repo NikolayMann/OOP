@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,19 @@ namespace WpfApp1
     {
         BankWorker Worker = new Manager();
         ClientDatabase database = new ClientDatabase();
+        static ObservableCollection<ClientCard> Base = new ObservableCollection<ClientCard>();
         public MainWindow()
         {
             InitializeComponent();
             RefreshFormData();
-            Binding binding = new Binding();
-          
+            ClientCard card = new ClientCard();
+            card.FirstName = "sdfasadf";
+            card.Secondname = "adsfsdfsaf";
+            card.Lastname = "adfsfadfadfd";
+            card.Passport = "Saddadasadsa";
+            card.Telephone = "1231231231231";
+            Base.Add(card);
+            Table.ItemsSource = Base;
         }
 
         void RefreshFormData()
