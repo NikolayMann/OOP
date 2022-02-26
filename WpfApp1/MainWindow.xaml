@@ -6,10 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="458" Width="654.775" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <local:ClientCard x:Key="ClientList"/>
-    </Window.Resources>
+        Title="MainWindow" Height="455" Width="1074" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="10,0,0,0" Visibility="Visible" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -22,47 +19,22 @@
             <RowDefinition Height="16.092"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,250,0">
-            <ComboBox x:Name="ClientList" BorderBrush="Black" Width="253"
-                      SelectionChanged="ComboBox_SelectionChanged"
-                      Text="">
-            </ComboBox>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0"
-                        HorizontalAlignment="Center">
-                <TextBox x:Name="ClientFullName" BorderBrush="Black" Background="White"
-                     Text="{Binding Text, ElementName=ClientList}" MinWidth="253"
-                     Width="Auto" IsEnabled="{Binding IsChecked, ElementName=manager}" Margin="0,0,0,0">
-                </TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center">
-                <TextBox x:Name="Telephone" BorderBrush="Black" Background="White"
-                     Width="253" IsEnabled="True" Margin="0,0,0,0" Text=""/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center">
-                <TextBox x:Name="Passport" BorderBrush="Black" Background="White"
-                     Width="253"
-                     IsEnabled="{Binding IsChecked, ElementName=manager}"
-                     Margin="0,0,0,0" Text=""/>
-            </StackPanel>
-            <TextBlock x:Name="RecordInfo" Background="White"
-                        Width="253" Margin="0,10,0,0" IsEnabled="False" Height="75">
-            </TextBlock>
+                        HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            <Button x:Name="Sort" Click="Sort_Click" Content="Sort" Background="White"
+                        Width="193" Margin="0,10,0,0" Height="23">
+            </Button>
             <DataGrid x:Name="Table" Height="96"
                       d:ItemsSource="{d:SampleData ItemCount=4}"
-                      Width="349">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Client ID" Width="Auto"/>
-                    <DataGridTextColumn Header="Name" Width="Auto"/>
-                    <DataGridTextColumn Header="Phone" Width="Auto"/>
-                    <DataGridTextColumn Header="Passport" Width="Auto"/>
-                    <DataGridTextColumn Header="Changed by" Width="Auto"/>
-                </DataGrid.Columns>
+                      Width="510">
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="327,0,0,0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="Save" Grid.Column="1" Grid.Row="1"
-                    Margin="90,0,0,0" Width="40" Height="40"
-                    HorizontalAlignment="Center" Background="Aqua"
+                <Button x:Name="Save" Width="40" Height="40"
+                    Background="Aqua"
                     ToolTip="SaveDataBase" Click="Save_Click"
                     IsEnabled="False">
                     <materialDesign:PackIcon Kind="File" Foreground="Black" Width="15" Height="15" />
@@ -77,14 +49,13 @@
                 </Button>
             </StackPanel>
             <GroupBox x:Name="Editors" Header="Specialist"
-                      BorderBrush="Black" Margin="0,20,0,0"
-                      Grid.Column="1" Grid.Row="1" 
+                      BorderBrush="Black" 
                       Width="100" Height="Auto">
                 <ItemsControl Width="Auto" Height="Auto">
                     <StackPanel>
                         <RadioButton x:Name="manager" Checked="manager_Checked"
                                      GroupName="Editor" Content="Manager"
-                                     Margin="0,0,0,0" IsChecked="True"></RadioButton>
+                                     Margin="0,0,0,0" IsChecked="True"/>
                         <RadioButton x:Name="consultant" Checked="consultant_Checked"
                                      GroupName="Editor" Content="Consultant"
                                      Margin="0,10,0,0" IsChecked="False"/>

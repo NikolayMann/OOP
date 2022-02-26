@@ -16,78 +16,25 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        BankWorker Worker = new Manager();
-        ClientDatabase database = new ClientDatabase();
-        static ObservableCollection<ClientCard> Base = new ObservableCollection<ClientCard>();
+        IBankWorker Worker = null;
         public MainWindow()
         {
             InitializeComponent();
-            RefreshFormData();
-            ClientCard card = new ClientCard();
-            card.FirstName = "sdfasadf";
-            card.Secondname = "adsfsdfsaf";
-            card.Lastname = "adfsfadfadfd";
-            card.Passport = "Saddadasadsa";
-            card.Telephone = "1231231231231";
-            Base.Add(card);
-            Table.ItemsSource = Base;
+            Table.ItemsSource = Worker.ClientDataBase();
         }
 
-        void RefreshFormData()
-        {
-            if (ClientList.SelectedIndex >= 0)
-            {
-                int ID = ClientList.SelectedIndex;
-                Client client = database.GetDatabaseClient(ID);                
-                ClientFullName.Text = Worker.GetName(client);
-                Telephone.Text = Worker.GetTelephone(ID);
-                Passport.Text = Worker.GetPassport(ID);
-                RecordInfo.Text = $"Changed {client.lastchanger}\r\n At {client.LastwritedTime}";
-            }
-        }
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            RefreshFormData();
-        }
-
-        private void AddNewCustomer()
-        {
-            if (database.SaveNewClient(ClientList.Text, Telephone.Text, Passport.Text))
-            {
-                int ID = ClientDatabase.DataBase.Count - 1;
-                Client client = database.GetDatabaseClient(ID);
-                ClientList.Items.Add(Worker.GetName(client));
-                Save.IsEnabled = false;
-                Add.IsEnabled = true;
-            }
-        }
-
-        private void SaveOldCustomer()
-        {
-            if (Telephone.Text != "")
-            {
-                Worker.SetTelephone(ClientList.SelectedIndex, Telephone.Text);
-                database.UpdateDatabase();
-            }
-        }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (Worker is Manager)
-            {
-                AddNewCustomer();
-            }
-            else
-            {
-                SaveOldCustomer();
-            }
+            Worker.SaveDatabase();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
-        {            
-            ClientList.Text = "Новый клиент";
-            Telephone.Text = "";
-            Passport.Text = "";
-            RecordInfo.Text = "";
+        {        
+            
+            if (Worker is Manager)
+            {
+                (Worker as Manager).AddNewClient();
+            }
             Add.IsEnabled = false;
             Save.IsEnabled = true;
         }
@@ -97,7 +44,7 @@ namespace WpfApp1
             Worker = new Manager();
             Add.IsEnabled = true;
             Save.IsEnabled = false;
-            RefreshFormData();
+            Table.ItemsSource = Worker.ClientDataBase();
         }
 
         private void consultant_Checked(object sender, RoutedEventArgs e)
@@ -105,7 +52,18 @@ namespace WpfApp1
             Worker = new Consultant();
             Add.IsEnabled = false;
             Save.IsEnabled = true;
-            RefreshFormData();
+            for (int i = 0; i < Table.Columns.Count; i++)
+            {
+                Table.Columns[i].IsReadOnly = true;
+            }
+            Table.Columns[1].IsReadOnly = false;
+            Table.ItemsSource = Worker.ClientDataBase();
+        }
+
+        private void Sort_Click(object sender, RoutedEventArgs e)
+        {
+            Worker.SortDatabase();
+            Table.ItemsSource = Worker.ClientDataBase();
         }
     }
 }

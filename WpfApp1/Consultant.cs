@@ -7,11 +7,20 @@ using System.Collections.ObjectModel;
 
 namespace WpfApp1
 {
-    public class Consultant : BankWorker
+    public class Consultant : IBankWorker
     {
-        public string GetName(Client client)
+        public ClientDatabase database;
+        public Consultant()
+        {
+            if (database == null)
+            {
+                database = new ClientDatabase();
+            }
+        }
+        public string GetName(int ClientID)
         {
             string result = "";
+            Client client = database.GetDatabaseClient(ClientID);
             if (client != null)
             {
                 result = $"{client.Name}";
@@ -20,7 +29,7 @@ namespace WpfApp1
         }
         public virtual string GetPassport(int ClientID)
         {
-            if (ClientDatabase.DataBase[ClientID].Passport != "")
+            if (database.DataBase[ClientID].Passport != "")
             {
                 return "*********************";
             }
@@ -32,9 +41,9 @@ namespace WpfApp1
         public string GetTelephone(int ClientID)
         {
             string result = "Item not exist";
-            if (ClientID < ClientDatabase.DataBase.Count)
+            if (ClientID < database.DataBase.Count)
             {
-                result = $"{ClientDatabase.DataBase[ClientID].Telephone}";
+                result = $"{database.DataBase[ClientID].Telephone}";
             }
             return result;
         }
@@ -48,17 +57,42 @@ namespace WpfApp1
             return false;
         }
 
+        public virtual bool SaveDatabase()
+        {
+            bool result = false;
+            return result;
+        }
+
         public virtual bool SetTelephone(int ClientID, string new_telephone)
         {
             bool result = false;
-            if (ClientID < ClientDatabase.DataBase.Count)
+            if (ClientID < database.DataBase.Count)
             {
-                ClientDatabase.DataBase[ClientID].Telephone = new_telephone;
-                ClientDatabase.DataBase[ClientID].lastchanger = "Consultant";
-                ClientDatabase.DataBase[ClientID].LastwritedTime = DateTime.Now;
+                database.DataBase[ClientID].Telephone = new_telephone;
+                database.DataBase[ClientID].Lastchanger = "Consultant";
+                database.DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
             }
             return result;
         }
+        public ObservableCollection<Client> ClientDataBase()
+        {
+            ObservableCollection<Client> clients = new ObservableCollection<Client>();
+            for (int i = 0; i < database.DataBase.Count; i++)
+            {
+                Client local_client = database.DataBase[i];
+                local_client.Passport = this.GetPassport(i);
+                clients.Add(local_client);
+            }
+            return clients;
+        }
+
+        public void SortDatabase()
+        {
+            database.Sort();
+        }
+
     }
 }
+    
+
