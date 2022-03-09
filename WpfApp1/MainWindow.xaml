@@ -6,46 +6,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="455" Width="1074" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="455" Width="1074" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">    
     <Grid Margin="10,0,0,0" Visibility="Visible" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="510"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="33.908"></RowDefinition>
-            <RowDefinition Height="16.092"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,250,0">
-            <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0"
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" >
+            <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,10,0"
                         HorizontalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0,10,0,0" HorizontalAlignment="Center"/>
             <Button x:Name="Sort" Click="Sort_Click" Content="Sort" Background="White"
-                        Width="193" Margin="0,10,0,0" Height="23">
+                        Width="200" Margin="0,20,0,20" Height="23">
             </Button>
             <DataGrid x:Name="Table" Height="96"
                       d:ItemsSource="{d:SampleData ItemCount=4}"
-                      Width="510">
-            </DataGrid>
+                      Width="510"
+                      Margin="0,20,0,0"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="327,0,0,0" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="1">
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="Save" Width="40" Height="40"
                     Background="Aqua"
                     ToolTip="SaveDataBase" Click="Save_Click"
-                    IsEnabled="False">
+                    IsEnabled="False" HorizontalAlignment="Center" Margin="150,0,0,0">
                     <materialDesign:PackIcon Kind="File" Foreground="Black" Width="15" Height="15" />
                 </Button>
                 <Button x:Name="Add" Grid.Column="1" Grid.Row="1"
-                    Margin="60,0,0,0" Width="40" Height="40"
+                    Margin="120,0,0,0" Width="40" Height="40"
                     HorizontalAlignment="Center"
                     Background="GreenYellow"
                     ToolTip="SaveDataBase"
-                    IsEnabled="{Binding IsChecked, ElementName=manager}" Click="Add_Click">
-                    <materialDesign:PackIcon Kind="Add" Foreground="Black" Width="15" Height="15"/>
+                    IsEnabled="{Binding IsChecked, ElementName=manager}" Click="Add_Click" >
+                    <materialDesign:PackIcon Kind="Add" Foreground="Black" Width="15" Height="15"
+                     HorizontalAlignment="Center"/>
                 </Button>
             </StackPanel>
             <GroupBox x:Name="Editors" Header="Specialist"
@@ -61,6 +60,22 @@
                                      Margin="0,10,0,0" IsChecked="False"/>
                     </StackPanel>
                 </ItemsControl>
+            </GroupBox>
+        </StackPanel>
+            <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.Column="1">
+            <TreeView x:Name="Accounts" Grid.Column="1" Grid.Row="1"
+                      Width="Auto" Margin="50,50,50,50" Height="100" >
+                <TreeView.ContextMenu>
+                    <ContextMenu Name="cm" StaysOpen="true">
+                        <MenuItem Header="Browse" Click="BrowseAccount"/>
+                        <MenuItem Header="Replace money" Click="ReplaceMoney"/>
+                    </ContextMenu>
+                </TreeView.ContextMenu>
+            </TreeView>
+            <GroupBox Header="Account info" Height ="Auto" Margin="50,0,50,50">
+                <TextBlock x:Name="AccountInfo" TextWrapping="Wrap">
+                    
+                </TextBlock>
             </GroupBox>
         </StackPanel>
     </Grid>

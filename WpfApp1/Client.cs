@@ -31,7 +31,7 @@ namespace WpfApp1
             Lastchanger = "Manager";
             LastwritedTime = DateTime.Now;
         }
-                       
-        private Client() { }
+                    
+        private Client() { }        
     }
 }

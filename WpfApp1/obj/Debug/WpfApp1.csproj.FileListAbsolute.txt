@@ -39,4 +39,3 @@ C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignColors.pd
 C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
-C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache

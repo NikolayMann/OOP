@@ -21,6 +21,13 @@ namespace WpfApp1
         {
             InitializeComponent();
             Table.ItemsSource = Worker.ClientDataBase();
+
+            TreeViewItem item = new TreeViewItem();
+            item.Header = "Files";
+            item.Items.Add("dfsdfsfsdfsdf");
+            Accounts.Items.Add(item);
+            AccountInfo.Text = "sadfssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
+            AccountInfo.Text += "sadfssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -29,8 +36,7 @@ namespace WpfApp1
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
-        {        
-            
+        {
             if (Worker is Manager)
             {
                 (Worker as Manager).AddNewClient();
@@ -64,6 +70,17 @@ namespace WpfApp1
         {
             Worker.SortDatabase();
             Table.ItemsSource = Worker.ClientDataBase();
+        }
+
+        private void BrowseAccount(object sender, RoutedEventArgs e)
+        {
+            string d = Accounts.SelectedItem.ToString();
+            d+=" ";
+        }
+
+        private void ReplaceMoney(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
