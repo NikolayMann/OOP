@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    public class Account<T>
+    public interface IAccount<in T, out Tout>
     {
-        public T Number { get; set; }
-        public T Balance { get; set; }
+
+    }
+    public class Account<T, Tout> : IAccount<T, Tout>
+    {
+        public Tout Number { get; set; }
+        public Tout Balance { get; set; }
+
+        public Account(T AccountDeposit)
+        {
+            isDeposit = AccountDeposit;
+        }
+        public T isDeposit { get; }
     }
 }

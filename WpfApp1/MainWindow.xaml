@@ -25,16 +25,15 @@
                         Width="200" Margin="0,20,0,20" Height="23">
             </Button>
             <DataGrid x:Name="Table" Height="96"
-                      d:ItemsSource="{d:SampleData ItemCount=4}"
                       Width="510"
-                      Margin="0,20,0,0"/>
+                      Margin="0,20,0,0" SelectionChanged="Table_SelectionChanged"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="1">
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="Save" Width="40" Height="40"
                     Background="Aqua"
                     ToolTip="SaveDataBase" Click="Save_Click"
-                    IsEnabled="False" HorizontalAlignment="Center" Margin="150,0,0,0">
+                    IsEnabled="True" HorizontalAlignment="Center" Margin="150,0,0,0">
                     <materialDesign:PackIcon Kind="File" Foreground="Black" Width="15" Height="15" />
                 </Button>
                 <Button x:Name="Add" Grid.Column="1" Grid.Row="1"
@@ -64,17 +63,19 @@
         </StackPanel>
             <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.Column="1">
             <TreeView x:Name="Accounts" Grid.Column="1" Grid.Row="1"
-                      Width="Auto" Margin="50,50,50,50" Height="100" >
-                <TreeView.ContextMenu>
-                    <ContextMenu Name="cm" StaysOpen="true">
-                        <MenuItem Header="Browse" Click="BrowseAccount"/>
-                        <MenuItem Header="Replace money" Click="ReplaceMoney"/>
-                    </ContextMenu>
-                </TreeView.ContextMenu>
+                      Width="Auto" Margin="50,50,50,50" Height="100" 
+                      SelectedItemChanged="Accounts_SelectedItemChanged"
+                      FontSize="10">
+                    <TreeView.ContextMenu>
+                        <ContextMenu Name="cm" StaysOpen="true">
+                            <MenuItem Header="Add" Click="AddAccount"/>
+                            <MenuItem Header="Delete" Click="DeleteAccount"/>
+                            <MenuItem x:Name="MoneyMenu" Header="Replace money from..." Click="ReplaceMoney"/>
+                        </ContextMenu>
+                    </TreeView.ContextMenu>
             </TreeView>
             <GroupBox Header="Account info" Height ="Auto" Margin="50,0,50,50">
-                <TextBlock x:Name="AccountInfo" TextWrapping="Wrap">
-                    
+                <TextBlock x:Name="AccountInfo" TextWrapping="Wrap">                    
                 </TextBlock>
             </GroupBox>
         </StackPanel>

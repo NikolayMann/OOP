@@ -14,6 +14,7 @@ namespace WpfApp1
     public class ClientDatabase
     {
         public ObservableCollection<Client> DataBase = new ObservableCollection<Client>();
+
         public ClientDatabase()
         {            
             InitClientInfo();
@@ -33,6 +34,14 @@ namespace WpfApp1
                             string[] fio = info[0].Split(' ');
                             Client client = new Client(fio[0], fio[1], fio[2], info[1]);
                             client.Passport = info[2];
+                            int accounts_registered = (info.Length - 6) / 3;
+                            for (int i = 0; i < accounts_registered; i++)
+                            {
+                                Account<bool, string> account = new Account<bool, string>(Convert.ToBoolean(info[7 + 3 * i]));
+                                account.Number = info[5 + 3 * i];
+                                account.Balance = info[6 + 3 * i];
+                                client.Account_List.Add(account);
+                            }
                             DataBase.Add(client);
                         }
                     }
@@ -50,7 +59,11 @@ namespace WpfApp1
                     {
                         foreach (var client in DataBase)
                         {
-                            string str = $"{client.Name}|{client.Telephone}|{client.Passport}|{client.Lastchanger}|{client.LastwritedTime}";
+                            string str = $"{client.Name}|{client.Telephone}|{client.Passport}|{client.Lastchanger}|{client.LastwritedTime}|";
+                            foreach (var e in client.Account_List)
+                            {
+                                str += $"{e.Number}|{e.Balance}|{e.isDeposit}|";
+                            }
                             writer.WriteLine(str);
                         }
                     }
@@ -63,8 +76,6 @@ namespace WpfApp1
             }
             return result;
         }
-
-
         public void Sort()
         {
             ObservableCollection<Client> Local = new ObservableCollection<Client>();

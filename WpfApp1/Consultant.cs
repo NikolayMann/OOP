@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Windows;
+using System.Windows.Media;
 
 namespace WpfApp1
 {
@@ -87,11 +90,101 @@ namespace WpfApp1
             return clients;
         }
 
+        public ObservableCollection<TreeViewItem> Accounts(int ClientID)
+        {
+            Client local_client = database.DataBase[ClientID];
+            ObservableCollection<TreeViewItem> result = new ObservableCollection<TreeViewItem>();
+            TreeViewItem itemDeposit = new TreeViewItem();
+            itemDeposit.Header = "Deposit";
+            TreeViewItem itemNotDeposit = new TreeViewItem();
+            itemNotDeposit.Header = "Not deposit";
+            for (int i = 0; i < local_client.Account_List.Count; i++)
+            {
+                if (!local_client.Account_List[i].isDeposit)
+                {
+                    itemNotDeposit.Items.Add($"Number: {local_client.Account_List[i].Number}");
+                }
+                else
+                {
+                    itemDeposit.Items.Add($"Number: {local_client.Account_List[i].Number}");
+                }
+            }
+            result.Add(itemDeposit);
+            result.Add(itemNotDeposit);
+            return result;
+        }
+
         public void SortDatabase()
         {
             database.Sort();
         }
 
+        public void AddAccount(int CliendID, bool isDeposit)
+        {
+            Account<bool, string> account = new Account<bool, string>(isDeposit);
+            Random random = new Random();
+            account.Number = random.Next().ToString();
+            account.Balance = "0";
+            database.DataBase[CliendID].Account_List.Add(account);
+        }
+
+        public void DeleteAccount(int CliendID, string Number)
+        {
+            for (int i = 0; i < database.DataBase[CliendID].Account_List.Count; i++)
+            {
+                if (database.DataBase[CliendID].Account_List[i].Number == Number)
+                {
+                    database.DataBase[CliendID].Account_List.Remove(database.DataBase[CliendID].Account_List[i]);
+                    break;
+                }
+            }            
+        }
+
+        public string GetAccountInfo(int CliendID, string Number)
+        {
+            string result = "";
+            for (int i = 0; i < database.DataBase[CliendID].Account_List.Count; i++)
+            {
+                if (database.DataBase[CliendID].Account_List[i].Number == Number)
+                {
+                    result = $"Number: {database.DataBase[CliendID].Account_List[i].Number}";
+                    result += $" Balance: {database.DataBase[CliendID].Account_List[i].Balance}";
+                    result += $" Is deposit: {database.DataBase[CliendID].Account_List[i].isDeposit}";
+                    break;
+                }
+            }
+            return result;
+        }
+
+        public void SendMoney(int ClientID, string Src, string Dst, int ToSend)
+        {
+            int Balance = 0, src_account_id = 0, dst_account_id = 0;
+            for (int i = 0; i < database.DataBase[ClientID].Account_List.Count; i++)
+            {
+                if (database.DataBase[ClientID].Account_List[i].Number == Src)
+                {
+                    src_account_id = i;
+                    Balance = Convert.ToInt32(database.DataBase[ClientID].Account_List[i].Balance);
+                }
+                else if (database.DataBase[ClientID].Account_List[i].Number == Dst)
+                {
+                    dst_account_id = i;
+                }
+            }
+
+            if (Balance < ToSend)
+            {
+                MessageBox.Show("Not enough money on src account!");
+            }
+            else
+            {
+                int Dest_Balance = Convert.ToInt32(database.DataBase[ClientID].Account_List[dst_account_id].Balance);
+                Balance -= ToSend;
+                Dest_Balance += ToSend;
+                database.DataBase[ClientID].Account_List[src_account_id].Balance = Balance.ToString();
+                database.DataBase[ClientID].Account_List[dst_account_id].Balance = Dest_Balance.ToString();
+            }
+        }
     }
 }
     

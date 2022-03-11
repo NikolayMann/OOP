@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +32,8 @@ namespace WpfApp1
             Telephone = telephone;
             Lastchanger = "Manager";
             LastwritedTime = DateTime.Now;
-        }
-                    
+        }                    
+        public ObservableCollection<Account<bool,string>> Account_List = new ObservableCollection<Account<bool, string>>();
         private Client() { }        
     }
 }
