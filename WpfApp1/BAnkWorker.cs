@@ -8,7 +8,9 @@ using System.Windows.Controls;
 namespace WpfApp1
 {
     public interface IBankWorker
-    {        
+    {
+        event Action<IBankWorker, Actions, int, string> AccountChanges;
+        event Action<string> LogAdded;
         string GetPassport(int ClientID);
         string GetName(int ClientID);
         string GetTelephone(int ClientID);

@@ -7,12 +7,19 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Controls.Primitives;
 
 namespace WpfApp1
 {
+    public enum Actions
+    {
+        SetTelephone, SetName, SetPassport, AddAccount, DelAccount, Resend
+    };
     public class Consultant : IBankWorker
     {
         public ClientDatabase database;
+        public event Action<IBankWorker, Actions, int, string> AccountChanges = null;
+        public event Action<string> LogAdded = null;
         public Consultant()
         {
             if (database == null)
@@ -26,7 +33,7 @@ namespace WpfApp1
             Client client = database.GetDatabaseClient(ClientID);
             if (client != null)
             {
-                result = $"{client.Name}";
+                result = $"{client.FirstName} {client.Secondname} {client.Lastname}";
             }
             return result;
         }
@@ -52,6 +59,7 @@ namespace WpfApp1
         }
         public virtual bool SetName(int ClientID, string new_name)
         {
+            AccountChanges?.Invoke(this, Actions.SetName, ClientID, new_name);
             return false;
         }
 
@@ -75,7 +83,9 @@ namespace WpfApp1
                 database.DataBase[ClientID].Lastchanger = "Consultant";
                 database.DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
+                AccountChanges?.Invoke(this, Actions.SetTelephone, ClientID, new_telephone);
             }
+            
             return result;
         }
         public ObservableCollection<Client> ClientDataBase()
@@ -84,29 +94,47 @@ namespace WpfApp1
             for (int i = 0; i < database.DataBase.Count; i++)
             {
                 Client local_client = database.DataBase[i];
+                local_client.PropertyChanged -= Local_client_PropertyChanged;
                 local_client.Passport = this.GetPassport(i);
+                local_client.PropertyChanged += Local_client_PropertyChanged;
                 clients.Add(local_client);
             }
             return clients;
         }
 
+        private void Local_client_PropertyChanged(string arg1, string arg2)
+        {
+            Journal journal = new Journal();
+            journal.Operation.Operation = arg1;
+            journal.Operation.OperationBy = this.ToString();
+            journal.Operation.OperationWhen = DateTime.Now;
+            journal.Operation.NewParameter = arg2;
+            journal.SerializeJournal();
+            string Log = $"{arg1} {this.ToString()}\r\n{arg2} {DateTime.Now}\r\n";
+            LogAdded?.Invoke(Log);
+        }
+
         public ObservableCollection<TreeViewItem> Accounts(int ClientID)
         {
-            Client local_client = database.DataBase[ClientID];
             ObservableCollection<TreeViewItem> result = new ObservableCollection<TreeViewItem>();
             TreeViewItem itemDeposit = new TreeViewItem();
             itemDeposit.Header = "Deposit";
             TreeViewItem itemNotDeposit = new TreeViewItem();
             itemNotDeposit.Header = "Not deposit";
-            for (int i = 0; i < local_client.Account_List.Count; i++)
+            if (ClientID >= 0)
             {
-                if (!local_client.Account_List[i].isDeposit)
+                Client local_client = database.DataBase[ClientID];
+
+                for (int i = 0; i < local_client.Account_List.Count; i++)
                 {
-                    itemNotDeposit.Items.Add($"Number: {local_client.Account_List[i].Number}");
-                }
-                else
-                {
-                    itemDeposit.Items.Add($"Number: {local_client.Account_List[i].Number}");
+                    if (!local_client.Account_List[i].isDeposit)
+                    {
+                        itemNotDeposit.Items.Add($"Number: {local_client.Account_List[i].Number}");
+                    }
+                    else
+                    {
+                        itemDeposit.Items.Add($"Number: {local_client.Account_List[i].Number}");
+                    }
                 }
             }
             result.Add(itemDeposit);
@@ -126,6 +154,7 @@ namespace WpfApp1
             account.Number = random.Next().ToString();
             account.Balance = "0";
             database.DataBase[CliendID].Account_List.Add(account);
+            AccountChanges?.Invoke(this, Actions.AddAccount, CliendID, account.Number);
         }
 
         public void DeleteAccount(int CliendID, string Number)
@@ -135,6 +164,7 @@ namespace WpfApp1
                 if (database.DataBase[CliendID].Account_List[i].Number == Number)
                 {
                     database.DataBase[CliendID].Account_List.Remove(database.DataBase[CliendID].Account_List[i]);
+                    AccountChanges?.Invoke(this, Actions.DelAccount, CliendID, Number);
                     break;
                 }
             }            
@@ -183,6 +213,7 @@ namespace WpfApp1
                 Dest_Balance += ToSend;
                 database.DataBase[ClientID].Account_List[src_account_id].Balance = Balance.ToString();
                 database.DataBase[ClientID].Account_List[dst_account_id].Balance = Dest_Balance.ToString();
+                AccountChanges?.Invoke(this, Actions.Resend, ClientID, Src);
             }
         }
     }

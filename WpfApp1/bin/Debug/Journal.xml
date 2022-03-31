@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T12:47:19.5758975+03:00</OperationWhen>
+  <Operation>AddAccount</Operation>
+  <NewParameter>660927140</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:04:12.8304943+03:00</OperationWhen>
+  <Operation>Passport</Operation>
+  <NewParameter>saddasasd</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:04:26.4969307+03:00</OperationWhen>
+  <Operation>Passport</Operation>
+  <NewParameter>saddasad</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Consultant</OperationBy>
+  <OperationWhen>2022-03-31T14:20:27.8368731+03:00</OperationWhen>
+  <Operation>LastName</Operation>
+  <NewParameter>Ивано</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Consultant</OperationBy>
+  <OperationWhen>2022-03-31T14:20:37.1345646+03:00</OperationWhen>
+  <Operation>LastName</Operation>
+  <NewParameter>Ивано</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:50:35.4873851+03:00</OperationWhen>
+  <Operation>SecondName</Operation>
+  <NewParameter>Иваноич</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:51:15.5850961+03:00</OperationWhen>
+  <Operation>SecondName</Operation>
+  <NewParameter>Ивановч</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:51:23.5392734+03:00</OperationWhen>
+  <Operation>SecondName</Operation>
+  <NewParameter>Ивановbч</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:51:37.406888+03:00</OperationWhen>
+  <Operation>SecondName</Operation>
+  <NewParameter>Иванович</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:55:07.8295805+03:00</OperationWhen>
+  <Operation>LastName</Operation>
+  <NewParameter>Ивнов</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:56:12.5751979+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Ива</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:56:17.7990045+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иван</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:56:20.9153309+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Ива</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:56:24.6617589+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иваав</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:58:10.2672101+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Ива</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:58:15.3515801+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иваh</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:58:19.4509532+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иваh</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:58:26.4135482+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иван</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:59:27.576098+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Ива</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:59:33.2371347+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иван</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:59:36.5149587+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Ива</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:59:39.9702892+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иван</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T14:59:58.9756033+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иваны</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T15:00:02.3080292+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иван</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T15:00:05.4921804+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>Иваны</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T15:00:08.5897774+03:00</OperationWhen>
+  <Operation>FirstName</Operation>
+  <NewParameter>ы</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T15:01:11.500102+03:00</OperationWhen>
+  <Operation>LastName</Operation>
+  <NewParameter>ванов</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T15:01:13.428227+03:00</OperationWhen>
+  <Operation>LastName</Operation>
+  <NewParameter />
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>WpfApp1.Manager</OperationBy>
+  <OperationWhen>2022-03-31T15:01:16.3622826+03:00</OperationWhen>
+  <Operation>SecondName</Operation>
+  <NewParameter>Иванови</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo>

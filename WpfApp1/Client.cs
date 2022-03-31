@@ -5,25 +5,62 @@ using System.Windows.Controls;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace WpfApp1
 {
     public class Client
     {
-        public string Name
+        private string _telephone;
+        private string _passport;
+        private string _lastchanger;
+        private string _fname;
+        private string _sname;
+        private string _lname;
+        private DateTime _lastChangeTime;
+
+        public string FirstName { get => _fname; set
+            {
+                _fname = value;
+                PropertyChanged?.Invoke("FirstName", value);
+            }
+        }
+        public string Secondname
         {
-            get { return $"{FirstName} {Secondname} {Lastname}"; }
-            set { }
+            get => _sname; set
+            {
+                _sname = value;
+                PropertyChanged?.Invoke("SecondName", value);
+            }
+        }
+        public string Lastname
+        {
+            get => _lname; set
+            {
+                _lname = value;
+                PropertyChanged?.Invoke("LastName", value);
+            }
         }
 
-        public string FirstName;
-        public string Secondname;
-        public string Lastname;
-        public string Telephone { get; set; }
+        public string Telephone { get => _telephone; set {
+                _telephone = value;
+                PropertyChanged?.Invoke("Telephone", value);} }
 
-        public string Passport { get; set; }
-        public string Lastchanger { get; set; }
-        public DateTime LastwritedTime { get; set; }
+        public string Passport { get => _passport; set {
+                _passport = value;
+                PropertyChanged?.Invoke("Passport", value);
+            } }
+
+        public string Lastchanger { get => _lastchanger; set {
+                _lastchanger = value;
+                PropertyChanged?.Invoke("Changer", value);
+            } }
+
+        public DateTime LastwritedTime { get => _lastChangeTime; set {
+                _lastChangeTime = value;
+                PropertyChanged?.Invoke("LastTime", value.ToString());
+            }
+        }
         public Client(string name, string sec_name, string last_name, string telephone)
         {
             FirstName = name;
@@ -34,6 +71,9 @@ namespace WpfApp1
             LastwritedTime = DateTime.Now;
         }                    
         public ObservableCollection<Account<bool,string>> Account_List = new ObservableCollection<Account<bool, string>>();
+
+        public event Action<string, string> PropertyChanged;
+
         private Client() { }        
     }
 }

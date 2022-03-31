@@ -24,9 +24,12 @@
             <Button x:Name="Sort" Click="Sort_Click" Content="Sort" Background="White"
                         Width="200" Margin="0,20,0,20" Height="23">
             </Button>
-            <DataGrid x:Name="Table" Height="96"
+            <DataGrid x:Name="Table" Height="96"           
                       Width="510"
-                      Margin="0,20,0,0" SelectionChanged="Table_SelectionChanged"/>
+                      Margin="0,20,0,0" SelectionChanged="Table_SelectionChanged" CellEditEnding="Table_CellEditEnding"/>
+
+                <TextBox x:Name="Log" Width="510" Height="80" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="1">
             <StackPanel Orientation="Horizontal">

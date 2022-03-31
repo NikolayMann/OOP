@@ -20,15 +20,17 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         IBankWorker Worker = null;
         int SelectedPersonID = 0;
-        Point start_point = new Point();
         public MainWindow()
         {
             InitializeComponent();
             Table.ItemsSource = Worker.ClientDataBase();
             Accounts.ItemsSource = Worker.Accounts(SelectedPersonID);
-            MoneyMenu.Header = "Replace money from...";
+            MoneyMenu.Header = "Replace money from...";    
+            
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -49,29 +51,44 @@ namespace WpfApp1
         private void manager_Checked(object sender, RoutedEventArgs e)
         {
             Worker = new Manager();
+            Worker.LogAdded += Worker_LogAdded;
+            (Worker as Manager).AccountChanges += MainWindow_AccountChanges;
             Table.ItemsSource = Worker.ClientDataBase();
         }
 
         private void consultant_Checked(object sender, RoutedEventArgs e)
         {
             Worker = new Consultant();
+            Worker.LogAdded += Worker_LogAdded;
+            (Worker as Consultant).AccountChanges += MainWindow_AccountChanges;
             for (int i = 0; i < Table.Columns.Count; i++)
             {
                 Table.Columns[i].IsReadOnly = true;
             }
-            Table.Columns[1].IsReadOnly = false;
+            Table.Columns[3].IsReadOnly = false;
             Table.ItemsSource = Worker.ClientDataBase();
+        }
+
+        private void Worker_LogAdded(string obj)
+        {
+            Log.Text += obj;
+        }
+
+        private void MainWindow_AccountChanges(IBankWorker arg1, Actions arg2, int arg3, string arg4)
+        {
+            Journal journal = new Journal();
+            journal.Operation.Operation = arg2.ToString();
+            journal.Operation.OperationBy = arg1.ToString();
+            journal.Operation.OperationWhen = DateTime.Now;
+            journal.Operation.NewParameter = arg4;
+            journal.Operation.ClientID = arg3;
+            journal.SerializeJournal();
         }
 
         private void Sort_Click(object sender, RoutedEventArgs e)
         {
             Worker.SortDatabase();
             Table.ItemsSource = Worker.ClientDataBase();
-        }
-
-        private void BrowseAccount(object sender, RoutedEventArgs e)
-        {
-            //AccountInfo.Text = $"Account number {}. Balance{}.";
         }
 
         private string source_Account = "";
@@ -171,5 +188,9 @@ namespace WpfApp1
             }
         }
 
+        private void Table_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+
+        }
     }
 }

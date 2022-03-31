@@ -31,15 +31,17 @@ namespace WpfApp1
 
         private bool SetClientName(int ClientID, string[] name_info)
         {
+            
             bool result = false;
             if (name_info.Length == 3)
             {
-                database.DataBase[ClientID].Name = name_info[0];
+                database.DataBase[ClientID].FirstName = name_info[0];
                 database.DataBase[ClientID].Secondname = name_info[1];
                 database.DataBase[ClientID].Lastname = name_info[2];
                 database.DataBase[ClientID].Lastchanger = "Manager";
                 database.DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
+                base.SetName(0, "");;
             }            
             return result;
         }
@@ -51,6 +53,7 @@ namespace WpfApp1
             {
                 string[] fio = new_name.Split(' ');
                 result = SetClientName(ClientID, fio);
+                base.SetName(ClientID, new_name);
             }
             return result;
         }
@@ -69,6 +72,7 @@ namespace WpfApp1
                 database.DataBase[ClientID].Lastchanger = "Manager";
                 database.DataBase[ClientID].LastwritedTime = DateTime.Now;
                 result = true;
+                base.SetTelephone(ClientID, new_telephone);
             }
             return result;
         }

@@ -14,7 +14,6 @@ namespace WpfApp1
     public class ClientDatabase
     {
         public ObservableCollection<Client> DataBase = new ObservableCollection<Client>();
-
         public ClientDatabase()
         {            
             InitClientInfo();
@@ -41,7 +40,7 @@ namespace WpfApp1
                                 account.Number = info[5 + 3 * i];
                                 account.Balance = info[6 + 3 * i];
                                 client.Account_List.Add(account);
-                            }
+                            }                            
                             DataBase.Add(client);
                         }
                     }
@@ -59,7 +58,7 @@ namespace WpfApp1
                     {
                         foreach (var client in DataBase)
                         {
-                            string str = $"{client.Name}|{client.Telephone}|{client.Passport}|{client.Lastchanger}|{client.LastwritedTime}|";
+                            string str = $"{client.FirstName}|{client.Secondname}|{client.Lastname}|{client.Telephone}|{client.Passport}|{client.Lastchanger}|{client.LastwritedTime}|";
                             foreach (var e in client.Account_List)
                             {
                                 str += $"{e.Number}|{e.Balance}|{e.isDeposit}|";
