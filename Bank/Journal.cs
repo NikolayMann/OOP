@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
-namespace WpfApp1
+namespace Bank
 {
     public struct OperationInfo
     {
@@ -15,7 +15,7 @@ namespace WpfApp1
         public string NewParameter;
         public int ClientID;
     };
-    class Journal
+    public class Journal
     {
         public OperationInfo Operation;
         XmlSerializer serializer = new XmlSerializer(typeof(OperationInfo));

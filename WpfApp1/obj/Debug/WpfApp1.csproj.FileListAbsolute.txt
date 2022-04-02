@@ -41,3 +41,8 @@ C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\WpfApp1.pdb
 C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\Window1.g.cs
 C:\Projects\Hausaufgabe\OOP\WpfApp1\obj\Debug\Window1.baml
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\Window1.g.cs
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\Window1.baml
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\Bank.dll
+C:\Users\Коля\source\repos\WpfApp1\WpfApp1\bin\Debug\Bank.pdb

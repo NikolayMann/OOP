@@ -12,7 +12,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Web.UI.WebControls;
-
+using Bank;
 namespace WpfApp1
 {
     /// <summary>

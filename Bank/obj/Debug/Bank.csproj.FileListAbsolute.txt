@@ -1,0 +1,5 @@
+C:\Users\Коля\source\repos\WpfApp1\Bank\bin\Debug\Bank.dll
+C:\Users\Коля\source\repos\WpfApp1\Bank\bin\Debug\Bank.pdb
+C:\Users\Коля\source\repos\WpfApp1\Bank\obj\Debug\Bank.csproj.CoreCompileInputs.cache
+C:\Users\Коля\source\repos\WpfApp1\Bank\obj\Debug\Bank.dll
+C:\Users\Коля\source\repos\WpfApp1\Bank\obj\Debug\Bank.pdb

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="455" Width="1074" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">    
+        Title="MainWindow" Height="455" Width="1074" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="10,0,0,0" Visibility="Visible" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="510"></ColumnDefinition>
@@ -28,8 +28,11 @@
                       Width="510"
                       Margin="0,20,0,0" SelectionChanged="Table_SelectionChanged" CellEditEnding="Table_CellEditEnding"/>
 
-                <TextBox x:Name="Log" Width="510" Height="80" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
 
+            <TextBox x:Name="Log" Width="510" TextWrapping="Wrap"
+                       MaxHeight="80" Height="Auto"
+                       ScrollViewer.VerticalScrollBarVisibility="Auto"  Margin="5">
+            </TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="1">
             <StackPanel Orientation="Horizontal">
@@ -64,21 +67,21 @@
                 </ItemsControl>
             </GroupBox>
         </StackPanel>
-            <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.Column="1">
+        <StackPanel Grid.Row="1" Margin="0,0,0,0" Grid.Column="1">
             <TreeView x:Name="Accounts" Grid.Column="1" Grid.Row="1"
                       Width="Auto" Margin="50,50,50,50" Height="100" 
                       SelectedItemChanged="Accounts_SelectedItemChanged"
                       FontSize="10">
-                    <TreeView.ContextMenu>
-                        <ContextMenu Name="cm" StaysOpen="true">
-                            <MenuItem Header="Add" Click="AddAccount"/>
-                            <MenuItem Header="Delete" Click="DeleteAccount"/>
-                            <MenuItem x:Name="MoneyMenu" Header="Replace money from..." Click="ReplaceMoney"/>
-                        </ContextMenu>
-                    </TreeView.ContextMenu>
+                <TreeView.ContextMenu>
+                    <ContextMenu Name="cm" StaysOpen="true">
+                        <MenuItem Header="Add" Click="AddAccount"/>
+                        <MenuItem Header="Delete" Click="DeleteAccount"/>
+                        <MenuItem x:Name="MoneyMenu" Header="Replace money from..." Click="ReplaceMoney"/>
+                    </ContextMenu>
+                </TreeView.ContextMenu>
             </TreeView>
             <GroupBox Header="Account info" Height ="Auto" Margin="50,0,50,50">
-                <TextBlock x:Name="AccountInfo" TextWrapping="Wrap">                    
+                <TextBlock x:Name="AccountInfo" TextWrapping="Wrap">
                 </TextBlock>
             </GroupBox>
         </StackPanel>

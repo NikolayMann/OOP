@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace WpfApp1
+namespace Bank
 {
     public class ClientDatabase
     {

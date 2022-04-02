@@ -9,13 +9,13 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls.Primitives;
 
-namespace WpfApp1
+namespace Bank
 {
     public enum Actions
     {
         SetTelephone, SetName, SetPassport, AddAccount, DelAccount, Resend
     };
-    public class Consultant : IBankWorker
+    public class Consultant : Bank.IBankWorker
     {
         public ClientDatabase database;
         public event Action<IBankWorker, Actions, int, string> AccountChanges = null;

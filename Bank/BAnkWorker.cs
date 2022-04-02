@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
-namespace WpfApp1
+
+namespace Bank
 {
     public interface IBankWorker
     {
@@ -26,7 +27,6 @@ namespace WpfApp1
         ObservableCollection<Client> ClientDataBase();
         ObservableCollection<TreeViewItem> Accounts(int ClientID);
         void SortDatabase();
-
         void SendMoney(int ClientID, string Src, string Dst, int ToSend);
     }
 }

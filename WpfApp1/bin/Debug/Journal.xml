@@ -201,4 +201,18 @@
   <Operation>SecondName</Operation>
   <NewParameter>Иванови</NewParameter>
   <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>Bank.Manager</OperationBy>
+  <OperationWhen>2022-04-02T14:58:41.1271042+03:00</OperationWhen>
+  <Operation>SecondName</Operation>
+  <NewParameter>Иванови</NewParameter>
+  <ClientID>0</ClientID>
+</OperationInfo><?xml version="1.0"?>
+<OperationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OperationBy>Bank.Manager</OperationBy>
+  <OperationWhen>2022-04-02T14:58:42.7837868+03:00</OperationWhen>
+  <Operation>SecondName</Operation>
+  <NewParameter>\</NewParameter>
+  <ClientID>0</ClientID>
 </OperationInfo>
