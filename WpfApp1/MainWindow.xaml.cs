@@ -35,7 +35,14 @@ namespace WpfApp1
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Worker.SaveDatabase();
+            try
+            {
+                Worker.SaveDatabase();
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show($"{err.Message}");
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -43,6 +50,7 @@ namespace WpfApp1
             if (Worker is Manager)
             {
                 (Worker as Manager).AddNewClient();
+                Table.ItemsSource = Worker.ClientDataBase();
             }
             Add.IsEnabled = false;
             Save.IsEnabled = true;

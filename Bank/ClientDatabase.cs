@@ -11,6 +11,26 @@ using System.Collections;
 
 namespace Bank
 {
+    public static class Ex
+    {
+        public static Client ToClient(this string input)
+        {
+            Client client;
+            string[] info = input.Split('|');
+            string[] fio = info[0].Split(' ');
+            client = new Client(fio[0], fio[1], fio[2], info[1]);
+            client.Passport = info[2];
+            int accounts_registered = (info.Length - 6) / 3;
+            for (int i = 0; i < accounts_registered; i++)
+            {
+                Account<bool, string> account = new Account<bool, string>(Convert.ToBoolean(info[7 + 3 * i]));
+                account.Number = info[5 + 3 * i];
+                account.Balance = info[6 + 3 * i];
+                client.Account_List.Add(account);
+            }
+            return client;
+        }
+    }
     public class ClientDatabase
     {
         public ObservableCollection<Client> DataBase = new ObservableCollection<Client>();
@@ -29,18 +49,7 @@ namespace Bank
                         while (!reader.EndOfStream)
                         {
                             string file_record = reader.ReadLine();
-                            string[] info = file_record.Split('|');
-                            string[] fio = info[0].Split(' ');
-                            Client client = new Client(fio[0], fio[1], fio[2], info[1]);
-                            client.Passport = info[2];
-                            int accounts_registered = (info.Length - 6) / 3;
-                            for (int i = 0; i < accounts_registered; i++)
-                            {
-                                Account<bool, string> account = new Account<bool, string>(Convert.ToBoolean(info[7 + 3 * i]));
-                                account.Number = info[5 + 3 * i];
-                                account.Balance = info[6 + 3 * i];
-                                client.Account_List.Add(account);
-                            }                            
+                            Client client = file_record.ToClient();
                             DataBase.Add(client);
                         }
                     }
@@ -71,7 +80,7 @@ namespace Bank
             }
             else
             {
-                MessageBox.Show("Серия и номер паспорта не введены!");
+                throw new WrongDataException("Серия и номер паспорта не введены!");
             }
             return result;
         }
